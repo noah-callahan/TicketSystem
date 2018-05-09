@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  comment: MyText
+  resolved: false
+  duration: 1
+  ticket: one
+  user: one
+
+two:
+  comment: MyText
+  resolved: false
+  duration: 1
+  ticket: two
+  user: two

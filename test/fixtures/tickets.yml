@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  category: MyString
+  equipment: MyString
+  hardware: MyString
+  software: MyString
+  description: MyText
+  status: 
+  walk_in: 
+  customer: one
+  user: one
+
+two:
+  category: MyString
+  equipment: MyString
+  hardware: MyString
+  software: MyString
+  description: MyText
+  status: 
+  walk_in: 
+  customer: two
+  user: two

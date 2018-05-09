@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>TicketSystem</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <% if user_signed_in? %>
+    <h3>Tech: <%= current_user.fname %> <%= current_user.lname %></h3>
+    <%= link_to "Sign out", destroy_user_session_path, method: :delete%>
+    <%= link_to "Dashboard", dashboard_path %>
+    <%= link_to "New Customer", new_customer_path %>
+    <%= link_to "New Ticket", new_ticket_path %>
+    <% end %>
+    <%= yield %>
+  </body>
+</html>
