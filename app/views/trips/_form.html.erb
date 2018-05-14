@@ -27,13 +27,11 @@
   </div>
 
   <div class="field">
-    <%= form.label :ticket_id %>
-    <%= form.text_field :ticket_id %>
+    <%= form.hidden_field :ticket_id, value: @ticket.id %>
   </div>
 
   <div class="field">
-    <%= form.label :user_id %>
-    <%= form.text_field :user_id %>
+    <%= form.hidden_field :user_id %>
   </div>
 
   <div class="actions">

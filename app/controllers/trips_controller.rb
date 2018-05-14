@@ -25,10 +25,17 @@ class TripsController < ApplicationController
   # POST /trips.json
   def create
     @trip = Trip.new(trip_params)
+    @trip[:user_id] = current_user.id
+
+    puts @trip.user_id
+    puts @trip.ticket_id
 
     respond_to do |format|
       if @trip.save
-        format.html { redirect_to @trip, notice: 'Trip was successfully created.' }
+        if @trip.resolved == true
+          Ticket.update(@trip.ticket_id, :status => 0)
+        end
+        format.html { redirect_to ticket_path(@trip.ticket_id), notice: 'Trip was successfully created.' }
         format.json { render :show, status: :created, location: @trip }
       else
         format.html { render :new }

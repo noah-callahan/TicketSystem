@@ -1,5 +1,5 @@
-<h1>Open Tickets</h1>
-<%=link_to("Closed Tickets", closed_tickets_path )%>
+<h1>Closed Tickets</h1>
+
 <table>
     <tr>
         <th>Ticket Number</th>
@@ -11,7 +11,7 @@
         <th>Software</th>
         <th>Description</th>
         <th>Status</th>
-        <th>Walk in?</th>
+        <th>Walk_in</th>
     </tr>
 
     <% @tickets.reverse.each do |f|%>
@@ -24,11 +24,8 @@
         <td><%=f.hardware%></td>
         <td><%=f.software%></td>
         <td><%=f.description%></td>
-        <td><%if f.status == true%>Open<%elsif f.status == false%>Closed<%end%></td>
-        <td><%if f.walk_in == true%>Yes<%elsif f.walk_in == false%>No<%end%></td>
+        <td><%=f.status%></td>
+        <td><%=f.walk_in%></td>
     </tr>
     <%end%>
 </table>
-
-
-

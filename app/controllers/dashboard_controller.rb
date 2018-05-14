@@ -1,5 +1,9 @@
 class DashboardController < ApplicationController
   def index
-    @tickets = Ticket.all
+    @tickets = Ticket.where("status = ?", true)
+  end
+
+  def closed
+    @tickets = Ticket.where("status = ?", false)
   end
 end

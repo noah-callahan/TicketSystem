@@ -1,67 +1,92 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Category:</strong>
+  <h3>Category:</h3>
   <%= @ticket.category %>
 </p>
 
 <p>
-  <strong>Equipment:</strong>
+  <h3>Equipment:</h3>
   <%= @ticket.equipment %>
 </p>
 
 <p>
-  <strong>Hardware:</strong>
+  <h3>Hardware:</h3>
   <%= @ticket.hardware %>
 </p>
 
 <p>
-  <strong>Software:</strong>
+  <h3>Software:</h3>
   <%= @ticket.software %>
 </p>
 
 <p>
-  <strong>Description:</strong>
+  <h3>Description:</h3>
   <%= @ticket.description %>
 </p>
 
 <p>
-  <strong>Status:</strong>
-  <%= @ticket.status %>
+  <h3>Status:</h3>
+  <%if @ticket.status == true %>
+    <p>Open</p>
+  <% elsif @ticket.status == false %>
+    <p>Closed</p>
+  <% end %>
 </p>
 
 <p>
-  <strong>Walk in:</strong>
+  <h3>Walk in:</h3>
   <%= @ticket.walk_in %>
 </p>
 
 <p>
-  <strong>Customer:</strong>
-  <%= @ticket.customer %>
+  <h3>For Customer:</h3>
+  <%= @ticket.customer.fname %> <%=@ticket.customer.lname %>
 </p>
 
 <p>
-  <strong>User:</strong>
-  <%= @ticket.user %>
+  <h3>Made By:</h3>
+  <%= @ticket.user.fname %> <%= @ticket.user.lname %>
 </p>
 
 <%= link_to 'Edit', edit_ticket_path(@ticket) %> |
 <%= link_to 'Back', tickets_path %>
 
-<h1>Trips/Comments</h1>
-
-<%@ticket.trips.each do |f|%>
-    <%= time_ago_in_words(f.created_at)%>
-    <%=f.comment%>
-    <%=f.duration%>
-    <%=f.user.fname + " " + f.user.lname%>
+<%if @ticket.status == true %>
+  <%= button_to 'Close Ticket', close_path(@ticket), method: :patch, data: { confirm: "Are you sure you want to close this ticket? Closing a ticket will not delete it." } %>
+<%else%>
+  <%= button_to 'Reopen Ticket', open_path(@ticket), method: :patch, data: { confirm: "Are you sure you want to reopen this ticket?" } %>
 <%end%>
 
+  <h1>Trips/Comments</h1>
+
+  <table>
+
+    <tr>
+      <th>Number</th>
+      <th>Made</th>
+      <th>Comment</th>
+      <th>Time Spent</th>
+      <th>Tech</th>
+      <th>Resolved?</th>
+    </tr>
+
+    <%@ticket.trips.each do |f|%>
+      <tr>
+          <td><%=f.id%></td>
+          <td><%=time_ago_in_words(f.created_at)%></td>
+          <td><%=f.comment%></td>
+          <td><%=f.duration%></td>
+          <td><%=f.user.fname + " " + f.user.lname%></td>
+          <td><% if f.resolved == false %> No <% elsif f.resolved == true  %> Yes <%end%></td>
+      </tr>
+    <%end%>
+
+  </table>
 
 
-
-<h1>Add a Trip/Comment</h1>
-
-
-<%= render "trips/form.html.erb", trip: @trip %>
+<%if @ticket.status == true%>
+  <h1>Add a Trip/Comment</h1>
+  <%= render "trips/form.html.erb", trip: @trip %>
+<%end%>
 
