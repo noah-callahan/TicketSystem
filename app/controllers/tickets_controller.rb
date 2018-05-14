@@ -10,6 +10,8 @@ class TicketsController < ApplicationController
   # GET /tickets/1
   # GET /tickets/1.json
   def show
+    @trip = Trip.new
+    @trips = Trip.where("ticket_id = ?", params[:id])
   end
 
   # GET /tickets/new

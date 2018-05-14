@@ -47,3 +47,21 @@
 
 <%= link_to 'Edit', edit_ticket_path(@ticket) %> |
 <%= link_to 'Back', tickets_path %>
+
+<h1>Trips/Comments</h1>
+
+<%@ticket.trips.each do |f|%>
+    <%= time_ago_in_words(f.created_at)%>
+    <%=f.comment%>
+    <%=f.duration%>
+    <%=f.user.fname + " " + f.user.lname%>
+<%end%>
+
+
+
+
+<h1>Add a Trip/Comment</h1>
+
+
+<%= render "trips/form.html.erb", trip: @trip %>
+
