@@ -25,7 +25,9 @@ class TicketsController < ApplicationController
   # POST /tickets.json
   def create
     @ticket = Ticket.new(ticket_params)
-
+    @ticket
+    @ticket[:user_id] = current_user.id
+    @ticket[:status] = true
     respond_to do |format|
       if @ticket.save
         format.html { redirect_to @ticket, notice: 'Ticket was successfully created.' }

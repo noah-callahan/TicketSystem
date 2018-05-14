@@ -22,6 +22,11 @@
   </div>
 
   <div class="field">
+    <%= form.label :customer_id %>
+    <%= select("ticket","customer_id", options_for_select(customer_array)) %>
+  </div>
+
+  <div class="field">
     <%= form.label :hardware %>
     <%= form.text_field :hardware %>
   </div>
@@ -37,8 +42,7 @@
   </div>
 
   <div class="field">
-    <%= form.label :status %>
-    <%= form.text_field :status %>
+    <%= form.hidden_field(:status) %>
   </div>
 
   <div class="field">
@@ -47,13 +51,7 @@
   </div>
 
   <div class="field">
-    <%= form.label :customer_id %>
-    <%= form.text_field :customer_id %>
-  </div>
-
-  <div class="field">
-    <%= form.label :user_id %>
-    <%= form.text_field :user_id %>
+    <%= form.hidden_field(:user_id) %>
   </div>
 
   <div class="actions">
