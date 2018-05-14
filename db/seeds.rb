@@ -6,6 +6,12 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+User.create(fname: "Noah", lname: "Callahan", email:"noah@gmail.com", password:"nycda1", password_confirmation:"nycda1")
+
+User.create(fname: "Kevin", lname: "Snyder", email:"kevin@gmail.com", password:"nycda1", password_confirmation:"nycda1")
+
+User.create(fname: "Joe", lname: "Leone", email:"joe@gmail.com", password:"nycda1", password_confirmation:"nycda1")
+
 
 Customer.create(fname: "Joe", lname: "Smith", phone_number:2158888888, email:"jsmith@gmail.com", address:"1234 North Street", city:"Philadelphia", state:"PA", zipcode:19145, user_id:1)
 
@@ -50,6 +56,24 @@ Ticket.create(category:"Hardware", equipment:"Laptop", hardware:"Lenovo ThinkPad
 
 
 Trip.create(comment:"Wrong part ordered. It's for a completely different laptop ...", resolved:false, duration:20, ticket_id:1, user_id:1)
+
+Trip.create(comment:"Wrong part ordered. It's for a completely different laptop ...", resolved:false, duration:20, ticket_id:2, user_id:1)
+
+Trip.create(comment:"Wrong part ordered. It's for a completely different laptop ...", resolved:false, duration:20, ticket_id:3, user_id:1)
+
+Trip.create(comment:"Wrong part ordered. It's for a completely different laptop ...", resolved:false, duration:20, ticket_id:4, user_id:1)
+
+Trip.create(comment:"Wrong part ordered. It's for a completely different laptop ...", resolved:false, duration:20, ticket_id:5, user_id:1)
+
+Trip.create(comment:"Wrong part ordered. It's for a completely different laptop ...", resolved:false, duration:20, ticket_id:6, user_id:1)
+
+Trip.create(comment:"Wrong part ordered. It's for a completely different laptop ...", resolved:false, duration:20, ticket_id:7, user_id:1)
+
+Trip.create(comment:"Wrong part ordered. It's for a completely different laptop ...", resolved:false, duration:20, ticket_id:8, user_id:1)
+
+Trip.create(comment:"Wrong part ordered. It's for a completely different laptop ...", resolved:false, duration:20, ticket_id:9, user_id:1)
+
+
 
 
 

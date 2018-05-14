@@ -52,3 +52,33 @@
 
 <%= link_to 'Edit', edit_customer_path(@customer) %> |
 <%= link_to 'Back', customers_path %>
+
+<h1>Customer's Tickets</h1>
+
+<table>
+    <tr>
+        <th>Ticket Number</th>
+        <th>Tech</th>
+        <th>Category</th>
+        <th>Equipment</th>
+        <th>Hardware</th>
+        <th>Software</th>
+        <th>Description</th>
+        <th>Status</th>
+        <th>Walk_in</th>
+    </tr>
+
+    <% @customer.tickets.reverse.each do |f|%>
+    <tr>
+        <td><%=link_to(f.id, ticket_path(f.id))%></td>
+        <td><%=f.user.fname%> <%=f.user.lname%></td>
+        <td><%=f.category%></td>
+        <td><%=f.equipment%></td>
+        <td><%=f.hardware%></td>
+        <td><%=f.software%></td>
+        <td><%=f.description%></td>
+        <td><%=f.status%></td>
+        <td><%=f.walk_in%></td>
+    </tr>
+    <%end%>
+</table>

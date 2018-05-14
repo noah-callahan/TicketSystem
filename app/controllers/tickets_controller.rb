@@ -23,6 +23,7 @@ class TicketsController < ApplicationController
   def edit
   end
 
+
   # POST /tickets
   # POST /tickets.json
   def create
@@ -39,6 +40,16 @@ class TicketsController < ApplicationController
         format.json { render json: @ticket.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def close
+    Ticket.update(params[:id], :status => 0)
+    redirect_to ticket_path(params[:id])
+  end
+
+  def open
+    Ticket.update(params[:id], :status => 1)
+    redirect_to ticket_path(params[:id])
   end
 
   # PATCH/PUT /tickets/1
