@@ -53,10 +53,14 @@
 <%= link_to 'Back', tickets_path %>
 
 <%if @ticket.status == true %>
-  <%= button_to 'Close Ticket', close_path(@ticket), method: :patch, data: { confirm: "Are you sure you want to close this ticket? Closing a ticket will not delete it." } %>
+  <%= button_to 'Close Ticket', close_path(@ticket), method: :patch, data: { confirm: "It's best practice to close a ticket using the comment/trip feature by checking resolved. Are you sure you want to close this ticket without giving feedback?" } %>
 <%else%>
   <%= button_to 'Reopen Ticket', open_path(@ticket), method: :patch, data: { confirm: "Are you sure you want to reopen this ticket?" } %>
 <%end%>
+
+<%if @ticket.status == false && @ticket.user_id == current_user.id %>
+  <%= button_to 'Delete Ticket', ticket_path(@ticket), method: :delete, data: { confirm: "Are you sure you want to delete this ticket?" } %>
+<% end %>
 
   <h1>Trips/Comments</h1>
 

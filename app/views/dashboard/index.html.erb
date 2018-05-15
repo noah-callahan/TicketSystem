@@ -1,3 +1,34 @@
+<h1>Your Tickets</h1>
+<table>
+    <tr>
+        <th>Ticket Number</th>
+        <th>Customer</th>
+        <th>Tech</th>
+        <th>Category</th>
+        <th>Equipment</th>
+        <th>Hardware</th>
+        <th>Software</th>
+        <th>Description</th>
+        <th>Status</th>
+        <th>Walk in?</th>
+    </tr>
+
+    <% @mytickets.reverse.each do |f|%>
+    <tr>
+        <td><%=link_to(f.id, ticket_path(f.id))%></td>
+        <td><%=link_to(f.customer.fname + " " + f.customer.lname, customer_path(f.customer.id))%></td>
+        <td><%=f.user.fname%> <%=f.user.lname%></td>
+        <td><%=f.category%></td>
+        <td><%=f.equipment%></td>
+        <td><%=f.hardware%></td>
+        <td><%=f.software%></td>
+        <td><%=f.description%></td>
+        <td><%if f.status == true%>Open<%elsif f.status == false%>Closed<%end%></td>
+        <td><%if f.walk_in == true%>Yes<%elsif f.walk_in == false%>No<%end%></td>
+    </tr>
+    <%end%>
+</table>
+
 <h1>Open Tickets</h1>
 <%=link_to("Closed Tickets", closed_tickets_path )%>
 <table>
