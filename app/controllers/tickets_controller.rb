@@ -44,6 +44,9 @@ class TicketsController < ApplicationController
 
   def close
     Ticket.update(params[:id], :status => 0)
+    @ticket = Ticket.find(params[:id])
+    send_grid(@ticket.customer.email, @ticket.id)
+
     redirect_to ticket_path(params[:id])
   end
 

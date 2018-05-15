@@ -46,7 +46,7 @@
 
 <p>
   <h3>Made By:</h3>
-  <%= @ticket.user.fname %> <%= @ticket.user.lname %>
+  <%= @ticket.user.fullname %>
 </p>
 
 <%= link_to 'Edit', edit_ticket_path(@ticket) %> |

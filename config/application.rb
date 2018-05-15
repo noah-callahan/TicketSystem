@@ -2,6 +2,10 @@ require_relative 'boot'
 
 require 'rails/all'
 
+require 'sendgrid-ruby'
+
+include SendGrid
+
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
@@ -16,4 +20,19 @@ module TicketSystem
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
   end
+end
+
+def send_grid(email, ticket)
+  from = Email.new(email: 'webmaster@ezticket.com')
+  to = Email.new(email: email)
+  subject = 'EZ Ticket Closed'
+  content = Content.new(type: 'text/plain', value: 'Your ticket numer ' + ticket.to_s + ' was closed.')
+  mail = Mail.new(from, subject, to, content)
+
+  sg = SendGrid::API.new(api_key: ENV['SENDGRID_API_KEY'])
+  response = sg.client.mail._('send').post(request_body: mail.to_json)
+  # puts response.status_code
+  # puts response.body
+  # puts response.parsed_body
+  # puts response.headers
 end
