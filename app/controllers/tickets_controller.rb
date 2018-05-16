@@ -43,7 +43,8 @@ class TicketsController < ApplicationController
   end
 
   def close
-    Ticket.update(params[:id], :status => 0)
+    Ticket.update(params[:id], :status => 0, :closed_by => current_user.id)
+    
     @ticket = Ticket.find(params[:id])
     send_grid(@ticket.customer.email, @ticket.id)
 
@@ -51,7 +52,7 @@ class TicketsController < ApplicationController
   end
 
   def open
-    Ticket.update(params[:id], :status => 1)
+    Ticket.update(params[:id], :status => 1, :closed_by => nil)
     redirect_to ticket_path(params[:id])
   end
 

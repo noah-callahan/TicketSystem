@@ -33,6 +33,7 @@ Customer.create(fname: "Mary", lname: "Smith", phone_number:2158888888, email:"m
 
 
 
+Ticket.create(category:"Hardware", equipment:"Laptop", hardware:"Lenovo ThinkPad 510p", description:"Laptop screen is cracked from being dropped. Need a tech to go and replace onsite.", status:true, walk_in:false, customer_id:1, user_id:1)
 
 Ticket.create(category:"Hardware", equipment:"Laptop", hardware:"Lenovo ThinkPad 510p", description:"Laptop screen is cracked from being dropped. Need a tech to go and replace onsite.", status:true, walk_in:false, customer_id:1, user_id:1)
 

@@ -5,6 +5,7 @@
         <th>Ticket Number</th>
         <th>Customer</th>
         <th>Tech</th>
+        <th>Closed By</th>
         <th>Category</th>
         <th>Equipment</th>
         <th>Hardware</th>
@@ -18,7 +19,8 @@
     <tr>
         <td><%=link_to(f.id, ticket_path(f.id))%></td>
         <td><%=link_to(f.customer.fname + " " + f.customer.lname, customer_path(f.customer.id))%></td>
-        <td><%=f.user.fname%> <%=f.user.lname%></td>
+        <td><%=f.user.fullname%></td>
+        <td><%=f.closer.fullname %></td>
         <td><%=f.category%></td>
         <td><%=f.equipment%></td>
         <td><%=f.hardware%></td>

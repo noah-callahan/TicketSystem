@@ -1,3 +1,5 @@
+
+
 <h1>Your Tickets</h1>
 <table>
     <tr>
@@ -16,8 +18,8 @@
     <% @mytickets.reverse.each do |f|%>
     <tr>
         <td><%=link_to(f.id, ticket_path(f.id))%></td>
-        <td><%=link_to(f.customer.fname + " " + f.customer.lname, customer_path(f.customer.id))%></td>
-        <td><%=f.user.fname%> <%=f.user.lname%></td>
+        <td><%=link_to(f.customer.fullname, customer_path(f.customer.id))%></td>
+        <td><%=f.user.fullname%></td>
         <td><%=f.category%></td>
         <td><%=f.equipment%></td>
         <td><%=f.hardware%></td>
@@ -30,7 +32,7 @@
 </table>
 
 <h1>Open Tickets</h1>
-<%=link_to("Closed Tickets", closed_tickets_path )%>
+
 <table>
     <tr>
         <th>Ticket Number</th>

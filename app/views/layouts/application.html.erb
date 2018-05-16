@@ -14,9 +14,11 @@
     <h3>Tech: <%= current_user.fname %> <%= current_user.lname %></h3>
     <%= link_to "Sign out", destroy_user_session_path, method: :delete%>
     <%= link_to "Dashboard", dashboard_path %>
+    <%= link_to "Closed Tickets", closed_tickets_path %>
     <%= link_to "New Customer", new_customer_path %>
     <%= link_to "View Customers", customers_path %>
     <%= link_to "New Ticket", new_ticket_path %>
+   
     <% end %>
     <%= yield %>
   </body>
