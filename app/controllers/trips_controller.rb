@@ -33,7 +33,7 @@ class TripsController < ApplicationController
     respond_to do |format|
       if @trip.save
         if @trip.resolved == true
-          Ticket.update(@trip.ticket_id, :status => 0)
+          Ticket.update(@trip.ticket_id, :status => 0, :closed_by => current_user.id)
           send_grid(@trip.ticket.customer.email, @trip.ticket.id)
         end
         format.html { redirect_to ticket_path(@trip.ticket_id), notice: 'Trip was successfully created.' }

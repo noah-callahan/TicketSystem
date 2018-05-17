@@ -26,6 +26,11 @@
 </p>
 
 <p>
+  <strong>Address:</strong>
+  <%= @customer.fulladdress %>
+</p>
+
+<p>
   <strong>City:</strong>
   <%= @customer.city %>
 </p>
@@ -47,7 +52,7 @@
 
 <p>
   <strong>User:</strong>
-  <%= @customer.user %>
+  <%= @customer.user.fullname %>
 </p>
 
 <%= link_to 'Edit', edit_customer_path(@customer) %> |
@@ -77,8 +82,8 @@
         <td><%=f.hardware%></td>
         <td><%=f.software%></td>
         <td><%=f.description%></td>
-        <td><%=f.status%></td>
-        <td><%=f.walk_in%></td>
+        <td><%if f.status == true%>Open<%elsif f.status == false%>Closed<%end%></td>
+        <td><%if f.walk_in == true%>Yes<%elsif f.walk_in == false%>No<%end%></td>
     </tr>
     <%end%>
 </table>
