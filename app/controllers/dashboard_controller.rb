@@ -1,10 +1,11 @@
 class DashboardController < ApplicationController
   def index
     @tickets = Ticket.where("status = ?", true)
-    @mytickets = Ticket.where("user_id = ?", current_user.id)
+    @mytickets = Ticket.where("user_id = ? and status = ?", current_user.id, true)
   end
 
   def closed
-    @tickets = Ticket.where("status = ?", false)
+    @yourclosed = Ticket.where("closed_by = ? and status = ?", current_user.id, false)
+    @allclosed = Ticket.where("status = ?", false)
   end
 end

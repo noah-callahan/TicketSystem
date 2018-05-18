@@ -34,7 +34,8 @@ class TripsController < ApplicationController
       if @trip.save
         if @trip.resolved == true
           Ticket.update(@trip.ticket_id, :status => 0, :closed_by => current_user.id)
-          send_grid(@trip.ticket.customer.email, @trip.ticket.id)
+          @ticket = Ticket.find(@trip.ticket_id)
+          send_grid(@ticket.customer.email, @ticket)
         end
         format.html { redirect_to ticket_path(@trip.ticket_id), notice: 'Trip was successfully created.' }
         format.json { render :show, status: :created, location: @trip }

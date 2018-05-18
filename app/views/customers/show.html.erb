@@ -1,13 +1,8 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Fname:</strong>
-  <%= @customer.fname %>
-</p>
-
-<p>
-  <strong>Lname:</strong>
-  <%= @customer.lname %>
+  <strong>Name:</strong>
+  <%= @customer.fullname %>
 </p>
 
 <p>
@@ -22,68 +17,89 @@
 
 <p>
   <strong>Address:</strong>
-  <%= @customer.address %>
-</p>
-
-<p>
-  <strong>Address:</strong>
   <%= @customer.fulladdress %>
 </p>
 
-<p>
-  <strong>City:</strong>
-  <%= @customer.city %>
-</p>
+<% if @customer.company != nil %>
+  <p>
+    <strong>Company:</strong>
+    <%= @customer.company %>
+  </p>
+<% end %>
 
 <p>
-  <strong>State:</strong>
-  <%= @customer.state %>
-</p>
-
-<p>
-  <strong>Zipcode:</strong>
-  <%= @customer.zipcode %>
-</p>
-
-<p>
-  <strong>Company:</strong>
-  <%= @customer.company %>
-</p>
-
-<p>
-  <strong>User:</strong>
+  <strong>Created by:</strong>
   <%= @customer.user.fullname %>
 </p>
 
 <%= link_to 'Edit', edit_customer_path(@customer) %> |
 <%= link_to 'Back', customers_path %>
+<% if @customer.user == current_user %><%= link_to 'Delete', @customer, method: :delete, data: { confirm: 'Are you sure?' } %><% end %>
 
-<h1>Customer's Tickets</h1>
+<% if @opentickets.blank?%>
+<% else %>
+  <h1>Customer's Open Tickets</h1>
 
-<table>
-    <tr>
-        <th>Ticket Number</th>
-        <th>Tech</th>
-        <th>Category</th>
-        <th>Equipment</th>
-        <th>Hardware</th>
-        <th>Software</th>
-        <th>Description</th>
-        <th>Status</th>
-        <th>Walk_in</th>
-    </tr>
+  <table>
+      <tr>
+          <th>Ticket Number</th>
+          <th>Tech</th>
+          <th>Category</th>
+          <th>Equipment</th>
+          <th>Hardware</th>
+          <th>Software</th>
+          <th>Description</th>
+          <th>Status</th>
+          <th>Walk_in</th>
+      </tr>
 
-    <% @customer.tickets.reverse.each do |f|%>
-    <tr>
-        <td><%=link_to(f.id, ticket_path(f.id))%></td>
-        <td><%=f.user.fname%> <%=f.user.lname%></td>
-        <td><%=f.category%></td>
-        <td><%=f.equipment%></td>
-        <td><%=f.hardware%></td>
-        <td><%=f.software%></td>
-        <td><%=f.description%></td>
-        <td><%if f.status == true%>Open<%elsif f.status == false%>Closed<%end%></td>
-        <td><%if f.walk_in == true%>Yes<%elsif f.walk_in == false%>No<%end%></td>
-    </tr>
-    <%end%>
-</table>
+      <% @opentickets.reverse.each do |f|%>
+      <tr>
+          <td><%=link_to(f.id, ticket_path(f.id))%></td>
+          <td><%=f.user.fullname%></td>
+          <td><%=f.category%></td>
+          <td><%=f.equipment%></td>
+          <td><%=f.hardware%></td>
+          <td><%=f.software%></td>
+          <td><%=f.description%></td>
+          <td><%if f.status == true%>Open<%elsif f.status == false%>Closed<%end%></td>
+          <td><%if f.walk_in == true%>Yes<%elsif f.walk_in == false%>No<%end%></td>
+      </tr>
+      <%end%>
+  </table>
+<% end %>
+
+
+
+<% if @closedtickets.blank? %>
+<% else %>
+  <h1>Customer's Closed Tickets</h1>
+
+  <table>
+      <tr>
+          <th>Ticket Number</th>
+          <th>Tech</th>
+          <th>Category</th>
+          <th>Equipment</th>
+          <th>Hardware</th>
+          <th>Software</th>
+          <th>Description</th>
+          <th>Status</th>
+          <th>Walk_in</th>
+      </tr>
+
+      <% @closedtickets.reverse.each do |f|%>
+      <tr>
+          <td><%=link_to(f.id, ticket_path(f.id))%></td>
+          <td><%=f.user.fullname%></td>
+          <td><%=f.category%></td>
+          <td><%=f.equipment%></td>
+          <td><%=f.hardware%></td>
+          <td><%=f.software%></td>
+          <td><%=f.description%></td>
+          <td><%if f.status == true%>Open<%elsif f.status == false%>Closed<%end%></td>
+          <td><%if f.walk_in == true%>Yes<%elsif f.walk_in == false%>No<%end%></td>
+      </tr>
+      <%end%>
+  </table>
+<% end %>

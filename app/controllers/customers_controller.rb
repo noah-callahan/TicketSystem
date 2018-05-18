@@ -10,6 +10,8 @@ class CustomersController < ApplicationController
   # GET /customers/1
   # GET /customers/1.json
   def show
+    @opentickets = Ticket.where("customer_id = ? and status = ?", params[:id], true)
+    @closedtickets = Ticket.where("customer_id = ? and status = ?", params[:id], false)
   end
 
   # GET /customers/new
