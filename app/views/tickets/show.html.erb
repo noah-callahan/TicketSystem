@@ -56,7 +56,7 @@
   </p>
 <% end %>
 
-<%= link_to 'Edit', edit_ticket_path(@ticket) %> |
+<% if @ticket.user == current_user %><%= link_to 'Edit', edit_ticket_path(@ticket) %><% end %>
 <%= link_to 'Back', dashboard_path %>
 
 <%if @ticket.status == true %>
@@ -89,7 +89,7 @@
           <td><%=i + 1%></td>
           <td><%=time_ago_in_words(f.created_at)%></td>
           <td><%=f.comment%></td>
-          <td><%=f.duration%></td>
+          <td><%=distance_of_time_in_words(0, f.duration*60)%></td>
           <td><%=f.user.fname + " " + f.user.lname%></td>
           <td><% if f.resolved == false %> No <% elsif f.resolved == true  %> Yes <%end%></td>
       </tr>

@@ -26,7 +26,7 @@ def send_grid(email, ticket)
   from = Email.new(email: 'webmaster@ezticket.com')
   to = Email.new(email: email)
   subject = 'EZ Ticket Closed'
-  content = Content.new(type: 'text/plain', value: 'Your ticket numer ' + ticket.to_s + ' was closed.')
+  content = Content.new(type: 'text/plain', value: 'Hello ' + @ticket.customer.fullname + '. Your ticket numer ' + @ticket.id.to_s + ' was closed by ' + @ticket.closer.fullname + '.')
   mail = Mail.new(from, subject, to, content)
 
   sg = SendGrid::API.new(api_key: ENV['SENDGRID_API_KEY'])
