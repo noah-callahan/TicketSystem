@@ -1,5 +1,15 @@
 <p id="notice"><%= notice %></p>
 
+<%if flash[:error] != nil%>
+  <div style="color:red;">
+    <p>There were errors creating this trip:</p>
+    <% flash[:error].each_with_index do |error, i| %>
+      <%=(i+1).to_s + " " + error%><br>
+    <%end%>
+  </div>
+<%end%>
+
+
 <p>
   <h3>Category:</h3>
   <%= @ticket.category %>
@@ -41,7 +51,7 @@
 
 <p>
   <h3>For Customer:</h3>
-  <%= @ticket.customer.fullname%>
+  <%= link_to @ticket.customer.fullname,customer_path(@ticket.customer.id)%>
 </p>
 
 <p>
