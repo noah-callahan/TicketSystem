@@ -54,6 +54,7 @@ class TicketsController < ApplicationController
   def open
     Ticket.update(params[:id], :status => 1, :closed_by => nil)
     redirect_to ticket_path(params[:id])
+    Trip.create(:comment => "This ticket was reopened. This was made automatically.", :resolved => false, :duration => 1, :ticket_id => params[:id], :user_id => current_user.id)
   end
 
   # PATCH/PUT /tickets/1

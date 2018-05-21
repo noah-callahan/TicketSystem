@@ -20,9 +20,9 @@
       <tr>
         <td><%= link_to customer.fullname, customer %></td>
         <td><%= customer.phone_number %></td>
-        <td><%= customer.email %></td>
+        <td><%= mail_to customer.email %></td>
         <td><%= customer.fulladdress %></td>
-        <td><% if customer.company.nil? %>None<% else %><%= customer.company %><% end %></td>
+        <td><% if customer.company.blank? %>None<% else %><%= customer.company %><% end %></td>
         <td><%= customer.user.fullname %></td>
       </tr>
     <% end %>

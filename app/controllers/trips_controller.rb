@@ -40,7 +40,8 @@ class TripsController < ApplicationController
         format.html { redirect_to ticket_path(@trip.ticket_id), notice: 'Trip was successfully created.' }
         format.json { render :show, status: :created, location: @trip }
       else
-        format.html { render :new }
+        format.html { redirect_to ticket_path(@trip.ticket_id) }
+        flash[:error] = @trip.errors.full_messages
         format.json { render json: @trip.errors, status: :unprocessable_entity }
       end
     end
