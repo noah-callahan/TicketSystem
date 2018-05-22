@@ -9,7 +9,7 @@ class Customer < ApplicationRecord
   validates :city, presence: true, length: { in: 3..20 }
   validates :state, presence: true, length: { is: 2 }
   validates :zipcode, presence: true, length: { is: 5 }
-  validates :company, length: { in: 0..25 }
+  validates :company, length: { in: 0..25 }, allow_nil: true
 
   def fullname
     self.fname << " " << self.lname

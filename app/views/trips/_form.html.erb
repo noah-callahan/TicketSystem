@@ -1,40 +1,43 @@
-<%= form_with(model: trip, local: true) do |form| %>
-  <% if trip.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(trip.errors.count, "error") %> prohibited this trip from being saved:</h2>
+<div class="form-div">
+  <%= form_with(model: trip, local: true) do |form| %>
+    <% if trip.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(trip.errors.count, "error") %> prohibited this trip from being saved:</h2>
 
-      <ul>
-      <% trip.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+        <ul>
+        <% trip.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="form-group" style="text-align: center;">
+      <%= form.label :comment %>
+      <%= form.text_area :comment, class: 'form-control' %>
+    </div>
+
+
+    <div class="form-group" style="width:200px; margin:0 auto; text-align:center; ">
+      <%= form.label "Duration(in minutes)" %>
+      <%= form.number_field :duration, class: 'form-control' %>
+    </div>
+
+    <div class="form-group">
+      <%= form.hidden_field :ticket_id, value: @ticket.id %>
+    </div>
+
+    <div class="form-group">
+      <%= form.hidden_field :user_id %>
+    </div>
+
+    <div class="form-group" style="text-align:center">
+      <%= form.label :resolved %>
+      <%= form.check_box :resolved %>
+    </div>
+
+    <div class="actions" style="text-align:center">
+      <%= form.submit class: "btn btn-success" %>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= form.label :comment %>
-    <%= form.text_area :comment %>
-  </div>
-
-  <div class="field">
-    <%= form.label :resolved %>
-    <%= form.check_box :resolved %>
-  </div>
-
-  <div class="field">
-    <%= form.label "Duration(in minutes)" %>
-    <%= form.number_field :duration %>
-  </div>
-
-  <div class="field">
-    <%= form.hidden_field :ticket_id, value: @ticket.id %>
-  </div>
-
-  <div class="field">
-    <%= form.hidden_field :user_id %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+</div>
