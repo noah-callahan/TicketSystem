@@ -11,41 +11,41 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :category %>
-    <%= select("ticket", "category", options_for_select(CATEGORY))%>
+    <%= select("ticket", "category", options_for_select(CATEGORY), {}, class: "form-control")%>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :equipment %>
-    <%= select("ticket", "equipment", options_for_select(EQUIPMENT))%>
+    <%= select("ticket", "equipment", options_for_select(EQUIPMENT), {}, class: "form-control")%>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :customer_id %>
-    <%= select("ticket","customer_id", options_for_select(customer_array)) %>
+    <%= select("ticket","customer_id", options_for_select(customer_array), {}, class: "form-control") %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :hardware %>
-    <%= form.text_field :hardware %>
+    <%= form.text_field :hardware, class: 'form-control' %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :software %>
-    <%= form.text_field :software %>
+    <%= form.text_field :software, class: 'form-control' %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :description %>
-    <%= form.text_area :description %>
+    <%= form.text_area :description, class: 'form-control input-lg ticket-desc' %>
   </div>
 
   <div class="field">
     <%= form.hidden_field(:status) %>
   </div>
 
-  <div class="field">
+  <div>
     <%= form.label :walk_in %>
     <%= form.check_box :walk_in %>
   </div>

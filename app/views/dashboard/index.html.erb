@@ -1,19 +1,21 @@
 
 
-<h3>Your Open Tickets</h3>
-<table>
-    <tr>
-        <th>Ticket Number</th>
-        <th>Customer</th>
-        <th>Tech</th>
-        <th>Category</th>
-        <th>Equipment</th>
-        <th>Hardware</th>
-        <th>Software</th>
-        <th>Description</th>
-        <th>Status</th>
-        <th>Walk in?</th>
-    </tr>
+<h2 class="heading-center">Your Open Tickets</h2>
+<table class="table-bordered text-center">
+    <thead>
+        <tr>
+            <th>Ticket Number</th>
+            <th>Customer</th>
+            <th>Tech</th>
+            <th>Category</th>
+            <th>Equipment</th>
+            <th>Hardware</th>
+            <th>Software</th>
+            <th>Description</th>
+            <th>Status</th>
+            <th>Walk in?</th>
+        </tr>
+    </thead>
 
     <% @mytickets.reverse.each do |f|%>
     <tr>
@@ -31,22 +33,23 @@
     <%end%>
 </table>
 
-<h3>All Open Tickets</h3>
+<h2 class="heading-center">All Open Tickets</h2>
 
-<table>
-    <tr>
-        <th>Ticket Number</th>
-        <th>Customer</th>
-        <th>Tech</th>
-        <th>Category</th>
-        <th>Equipment</th>
-        <th>Hardware</th>
-        <th>Software</th>
-        <th>Description</th>
-        <th>Status</th>
-        <th>Walk in?</th>
-    </tr>
-
+<table class="table-bordered table-dark text-center">
+    <thead>
+        <tr>
+            <th>Ticket Number</th>
+            <th>Customer</th>
+            <th>Tech</th>
+            <th>Category</th>
+            <th>Equipment</th>
+            <th>Hardware</th>
+            <th>Software</th>
+            <th>Description</th>
+            <th>Status</th>
+            <th>Walk in?</th>
+        </tr>
+    </thead>
     <% @tickets.reverse.each do |f|%>
     <tr>
         <td><%=link_to(f.id, ticket_path(f.id))%></td>

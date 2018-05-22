@@ -1,0 +1,50 @@
+tr > th {
+    text-align:center;
+}
+.center{
+    text-align:center;
+}
+    
+
+#nav {
+    background-color:rgb(73, 203, 247);
+    font-weight:bold;
+    border-width: 2px;
+}
+
+.navitem{
+    color:white;
+}
+
+#test{
+    color:green;
+}
+
+#link-color li a{
+    color:white;
+    font-size:15px;
+}
+
+#link-color li a:hover{
+    transform: scale(1.1);
+}
+
+
+th, td{
+    padding:15px !important;
+    font-family: 'Source Sans Pro', sans-serif !important;
+}
+
+td > a:hover{
+    background-color:white !important;
+}
+
+.heading-center{
+    font-family: 'Source Sans Pro', sans-serif;
+    text-align:center;
+    margin:50px;
+}
+
+.ticket-desc{
+    height:400px !important;
+}
