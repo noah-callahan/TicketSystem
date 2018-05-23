@@ -44,6 +44,7 @@ class TicketsController < ApplicationController
 
   def close
     Ticket.update(params[:id], :status => 0, :closed_by => current_user.id)
+    Trip.create(:comment => "This ticket was closed without leaving feedback!", :resolved => true, :duration => 1, :ticket_id => params[:id], :user_id => current_user.id )
     
     @ticket = Ticket.find(params[:id])
     send_grid(@ticket.customer.email, @ticket.id)
@@ -54,7 +55,7 @@ class TicketsController < ApplicationController
   def open
     Ticket.update(params[:id], :status => 1, :closed_by => nil)
     redirect_to ticket_path(params[:id])
-    Trip.create(:comment => "This ticket was reopened. This was made automatically.", :resolved => false, :duration => 1, :ticket_id => params[:id], :user_id => current_user.id)
+    Trip.create(:comment => "This ticket was reopened.", :resolved => false, :duration => 1, :ticket_id => params[:id], :user_id => current_user.id)
   end
 
   # PATCH/PUT /tickets/1

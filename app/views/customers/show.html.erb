@@ -1,46 +1,53 @@
-<p id="notice"><%= notice %></p>
+<p id="notice" class="heading-center"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @customer.fullname %>
-</p>
 
-<p>
-  <strong>Phone number:</strong>
-  <%= @customer.phone_number %>
-</p>
+  
+<h2 class="heading-center"><%= @customer.fullname %></h2>
 
-<p>
-  <strong>Email:</strong>
-  <%= mail_to @customer.email %>
-</p>
+<div class="show-div">
+  <div class="area-border">
+    <h3>Phone Number</h3>
+    <%= @customer.phone_number %>
+  </div>
 
-<p>
-  <strong>Address:</strong>
-  <%= @customer.fulladdress %>
-</p>
+<div class="area-border">
+    <h3>Email</h3>
+    <%= mail_to @customer.email %>
+</div>
 
-<% if @customer.company != nil %>
-  <p>
-    <strong>Company:</strong>
-    <%= @customer.company %>
-  </p>
-<% end %>
+<div class="area-border">
+    <h3>Address</h3>
+    <%= @customer.fulladdress %>
+</div>
+  
 
-<p>
-  <strong>Created by:</strong>
-  <%= @customer.user.fullname %>
-</p>
+  <% if @customer.company == nil || @customer.company == "" %>
+  <% else %>
+  <div class="area-border">
+      <h3>Company</h3>
+      <%= @customer.company %>
+  </div> 
+  <% end %>
 
-<%= link_to 'Edit', edit_customer_path(@customer) %> |
-<%= link_to 'Back', customers_path %>
-<% if @customer.user == current_user %><%= link_to 'Delete', @customer, method: :delete, data: { confirm: 'Are you sure?' } %><% end %>
+  <div class="area-border">
+    <h3>Created By</h3>
+    <%= @customer.user.fullname %>
+  </div>
+  
+  <br>
+
+  <%= link_to 'Edit', edit_customer_path(@customer), :class => "btn btn-primary" %>
+
+  <% if @customer.user == current_user %><%= link_to 'Delete', @customer, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger" %><% end %>
+
+</div>
+
 
 <% if @opentickets.blank?%>
 <% else %>
-  <h1>Customer's Open Tickets</h1>
+  <h2 class="heading-center">Customer's Open Tickets</h2>
 
-  <table>
+  <table class="table-bordered text-center">
       <tr>
           <th>Ticket Number</th>
           <th>Tech</th>
@@ -50,7 +57,7 @@
           <th>Software</th>
           <th>Description</th>
           <th>Status</th>
-          <th>Walk_in</th>
+          <th>Walk in?</th>
       </tr>
 
       <% @opentickets.reverse.each do |f|%>
@@ -73,9 +80,9 @@
 
 <% if @closedtickets.blank? %>
 <% else %>
-  <h1>Customer's Closed Tickets</h1>
+  <h2 class="heading-center">Customer's Closed Tickets</h2>
 
-  <table>
+  <table class="table-bordered text-center">
       <tr>
           <th>Ticket Number</th>
           <th>Tech</th>
@@ -85,7 +92,7 @@
           <th>Software</th>
           <th>Description</th>
           <th>Status</th>
-          <th>Walk_in</th>
+          <th>Walk in?</th>
       </tr>
 
       <% @closedtickets.reverse.each do |f|%>
