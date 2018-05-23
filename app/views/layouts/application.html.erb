@@ -18,12 +18,10 @@
     <link rel="stylesheet" href="main.css">
     
   </head>
-  <div class='container'>
-  <body class="background">
-    <nav id="nav" class="navbar navbar-default">
+  <nav id="nav" class="navbar navbar-default">
       <div class="container-fluid">
         <div class="navbar-header">
-          <a class="navbar-brand" href="#" style="color:white;">EZ Ticket</a>
+          <a class="navbar-brand" href="#" style="color:white;font-size:25px;">EZ Ticket</a>
         </div>
       <ul class="nav navbar-nav" id="link-color">
         <% if user_signed_in? %>
@@ -37,9 +35,18 @@
           <li style="color:white;margin-top:16px;">Tech: <%= current_user.fname %></li>
           <li><%= link_to "Sign out", destroy_user_session_path, method: :delete%></li>
       </ul>
+      <%else%>
+      <ul class="nav navbar-nav" id="link-color">
+        <li><%= link_to "Home", root_path%></li>
+        <li><%= link_to "Sign In", new_user_session_path%></li>
+        <li><%= link_to "Sign Up", new_user_registration_path%></li>
+      </ul>
       <% end %>
       </div>
     </nav>
+  <div class='container'>
+  <body class="background">
+    
    
     <%= yield %>
   </body>

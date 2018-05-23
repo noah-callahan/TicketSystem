@@ -67,7 +67,7 @@
           <td><%=f.category%></td>
           <td><%=f.equipment%></td>
           <td><%=f.hardware%></td>
-          <td><%=f.software%></td>
+          <td><%if f.software.blank?%>None<%else%><%=f.software%><%end%></td>
           <td><%=f.description%></td>
           <td><%if f.status == true%>Open<%elsif f.status == false%>Closed<%end%></td>
           <td><%if f.walk_in == true%>Yes<%elsif f.walk_in == false%>No<%end%></td>
@@ -102,7 +102,7 @@
           <td><%=f.category%></td>
           <td><%=f.equipment%></td>
           <td><%=f.hardware%></td>
-          <td><%=f.software%></td>
+          <td><%if f.software.blank?%>None<%else%><%=f.software%><%end%></td>
           <td><%=f.description%></td>
           <td><%if f.status == true%>Open<%elsif f.status == false%>Closed<%end%></td>
           <td><%if f.walk_in == true%>Yes<%elsif f.walk_in == false%>No<%end%></td>

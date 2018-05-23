@@ -1,7 +1,7 @@
 <p id="notice" class="heading-center"><%= notice %></p>
 
 <%if flash[:error] != nil%>
-  <div style="color:red;">
+  <div style="color:red;" class="heading-center">
     <p>There were errors creating this trip:</p>
     <% flash[:error].each_with_index do |error, i| %>
       <%=(i+1).to_s + " " + error%><br>
