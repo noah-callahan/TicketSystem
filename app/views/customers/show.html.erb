@@ -2,7 +2,7 @@
 
 
   
-<h2 class="heading-center"><%= @customer.fullname %></h2>
+<h1 class="heading-center"><%= @customer.fullname %></h1>
 
 <div class="show-div">
   <div class="area-border">
@@ -45,7 +45,7 @@
 
 <% if @opentickets.blank?%>
 <% else %>
-  <h2 class="heading-center">Customer's Open Tickets</h2>
+  <h1 class="heading-center">Customer's Open Tickets</h1>
 
   <table class="table-bordered text-center">
       <tr>
@@ -80,7 +80,7 @@
 
 <% if @closedtickets.blank? %>
 <% else %>
-  <h2 class="heading-center">Customer's Closed Tickets</h2>
+  <h1 class="heading-center">Customer's Closed Tickets</h1>
 
   <table class="table-bordered text-center">
       <tr>
