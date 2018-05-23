@@ -1,5 +1,67 @@
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
+<h1 class="heading-center">Welcome to EZ Ticket</h1>
+<h3 class="heading-center">Please sign in or sign up.</h3>
 
-<%= link_to "Sign In", new_user_session_path %>
-<%= link_to "Sign Up", new_user_registration_path %>
+
+
+<div class="signin-div" style="text-align:center;">
+    <h3 style=" padding: 15px;">Sign In</h3>
+    <%= form_for(:user, :url => session_path(:user)) do |f| %>
+    <div class="form-group">
+        <%= f.label :email %><br />
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control' %>
+    </div>
+
+    <div class="form-group">
+        <%= f.label :password %><br />
+        <%= f.password_field :password, autocomplete: "off", class: 'form-control' %>
+    </div>
+
+        <div>
+        <%= f.check_box :remember_me %>
+        <%= f.label :remember_me %>
+        </div>
+    
+
+    <div class="actions">
+        <%= f.submit "Log in", class: "btn btn-primary" %>
+    </div>
+    <% end %>
+</div>
+
+<div class="signup-div" style="text-align:center;">
+    <h3 style=" padding: 15px;">Sign Up</h3>
+    <%= form_for(:user, :url => registration_path(:user)) do |f| %>
+    
+    <div class="form-group">
+        <%= f.label "First Name" %><br />
+        <%= f.text_field :fname, autofocus: true, class: 'form-control' %>
+    </div>
+
+    <div class="form-group">
+        <%= f.label "Last Name" %><br />
+        <%= f.text_field :lname, autofocus: true, class: 'form-control' %>
+    </div>
+
+    <div class="form-group">
+        <%= f.label :email %><br />
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control' %>
+    </div>
+
+    <div class="form-group">
+        <%= f.label :password %>
+        <% if @minimum_password_length %>
+        <em>(<%= @minimum_password_length %> characters minimum)</em>
+        <% end %><br />
+        <%= f.password_field :password, autocomplete: "off", class: 'form-control' %>
+    </div>
+
+    <div class="field">
+        <%= f.label :password_confirmation %><br />
+        <%= f.password_field :password_confirmation, autocomplete: "off", class: 'form-control' %>
+    </div>
+
+    <div class="actions">
+        <%= f.submit "Sign up", class:"btn btn-primary" %>
+    </div>
+    <% end %>
+</div>
